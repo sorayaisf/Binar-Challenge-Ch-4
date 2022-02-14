@@ -118,11 +118,11 @@ function getResult(resultCom, resultPlayer) {
     } else if (resultCom == "comKertas" && resultPlayer == "userGunting") {
         result = "PLAYER 1 WIN";
     } else if (resultCom == "comBatu" && resultPlayer == "userGunting") {
-        result = "COM 1 WIN"
+        result = "COM WIN"
     } else if (resultCom == "comGunting" && resultPlayer == "userBatu") {
         result = "PLAYER 1 WIN";
     } else if (resultCom == "comKertas" && resultPlayer == "userBatu") {
-        result = "COM 1 WIN";
+        result = "COM WIN";
     } else if (resultCom == "comBatu" && resultPlayer == "userBatu") {
         result = "DRAW";
     }
