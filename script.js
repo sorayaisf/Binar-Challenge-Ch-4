@@ -107,24 +107,18 @@ function getResult(resultCom, resultPlayer) {
     console.log("resultPlayer :" + resultPlayer);
 
 
-    if (resultCom == "comGunting" && resultPlayer == "userKertas") {
+    if (
+        (player == "batu" && com == "gunting") ||
+        (player == "gunting" && com == "kertas") ||
+        (player == "kertas" && com == "batu")
+    ) {
+        result = "PLAYER WIN";
+    } else if (
+        (player == "batu" && com == "kertas") ||
+        (player == "gunting" && com == "batu") ||
+        (player == "kertas" && com == "gunting")
+    ) {
         result = "COM WIN";
-    } else if (resultCom == "comKertas" && resultPlayer == "userKertas") {
-        result = "DRAW";
-    } else if (resultCom == "comBatu" && resultPlayer == "userKertas") {
-        result = "PLAYER 1 WIN";
-    } else if (resultCom == "comGunting" && resultPlayer == "userGunting") {
-        result = "DRAW";
-    } else if (resultCom == "comKertas" && resultPlayer == "userGunting") {
-        result = "PLAYER 1 WIN";
-    } else if (resultCom == "comBatu" && resultPlayer == "userGunting") {
-        result = "COM WIN"
-    } else if (resultCom == "comGunting" && resultPlayer == "userBatu") {
-        result = "PLAYER 1 WIN";
-    } else if (resultCom == "comKertas" && resultPlayer == "userBatu") {
-        result = "COM WIN";
-    } else if (resultCom == "comBatu" && resultPlayer == "userBatu") {
-        result = "DRAW";
     }
     return result;
 }
