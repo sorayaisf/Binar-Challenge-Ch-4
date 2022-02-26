@@ -107,24 +107,24 @@ function getResult(resultCom, resultPlayer) {
     console.log("resultPlayer :" + resultPlayer);
 
 
-    if (resultCom == "comGunting" && resultPlayer == "userKertas") {
+    if (
+        (resultCom == "comBatu" && resultPlayer == "userKertas") ||
+        (resultCom == "comKertas" && resultPlayer == "userGunting") ||
+        (resultCom == "comGunting" && resultPlayer == "userBatu")
+    ) {
+        result = "PLAYER 1 WIN";
+    } else if (
+        (resultCom == "comGunting" && resultPlayer == "userKertas") ||
+        (resultCom == "comBatu" && resultPlayer == "userGunting") ||
+        (resultCom == "comKertas" && resultPlayer == "userBatu")
+    ) {
         result = "COM WIN";
-    } else if (resultCom == "comKertas" && resultPlayer == "userKertas") {
-        result = "DRAW";
-    } else if (resultCom == "comBatu" && resultPlayer == "userKertas") {
-        result = "PLAYER 1 WIN";
-    } else if (resultCom == "comGunting" && resultPlayer == "userGunting") {
-        result = "DRAW";
-    } else if (resultCom == "comKertas" && resultPlayer == "userGunting") {
-        result = "PLAYER 1 WIN";
-    } else if (resultCom == "comBatu" && resultPlayer == "userGunting") {
-        result = "COM WIN"
-    } else if (resultCom == "comGunting" && resultPlayer == "userBatu") {
-        result = "PLAYER 1 WIN";
-    } else if (resultCom == "comKertas" && resultPlayer == "userBatu") {
-        result = "COM WIN";
-    } else if (resultCom == "comBatu" && resultPlayer == "userBatu") {
-        result = "DRAW";
+    } else if (
+        (resultCom == "comKertas" && resultPlayer == "userKertas") ||
+        (resultCom == "comGunting" && resultPlayer == "userGunting") ||
+        (resultCom == "comBatu" && resultPlayer == "userBatu")
+    ) {
+        result = "DRAW"
     }
     return result;
 }
