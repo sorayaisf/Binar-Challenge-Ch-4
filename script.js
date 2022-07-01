@@ -21,8 +21,6 @@ refreshPage.addEventListener('click', function () {
 })
 
 var Enabled = true;
-
-
 const hands = document.querySelectorAll(".hand");
 
 class Game {
@@ -47,9 +45,7 @@ const removeAll = () => {
     });
 };
 
-
 const game = new Game();
-
 const computer = () => {
     const comRandom = [comBatu, comKertas, comGunting];
     const random = comRandom[Math.floor(Math.random() * 3)];
@@ -111,15 +107,11 @@ userGunting.onclick = () => {
     }
 };
 
-
-
-
 function getResult(resultCom, resultPlayer) {
     let result = "";
 
 
     // perhitungan
-
     console.log("resultCom :" + resultCom);
     console.log("resultPlayer :" + resultPlayer);
 
