@@ -14,6 +14,13 @@ const comGunting = document.getElementById("comGunting");
 
 // REFRESH
 const refreshPage = document.getElementById("refresh-page");
+refreshPage.addEventListener('click', function () {
+    if (confirm("Play Again??")) {
+        location.reload()
+    }
+})
+
+var Enabled = true;
 
 
 const hands = document.querySelectorAll(".hand");
@@ -27,7 +34,6 @@ class Game {
     }
 
     remove() {
-
         console.log("remove class");
         console.log(userKertas);
 
@@ -55,49 +61,60 @@ const computer = () => {
 
 
 userKertas.onclick = () => {
-    let resultPlayer = userKertas.id;
-    console.log("kertas di klik");
-    removeAll();
-    userKertas.classList.add("highlight");
-    let resultCom = computer();
-    document.querySelector("#game-result .player-result").style.display = "block";
-    document.querySelector("#game-result .result-text").remove();
-    document.querySelector("#game-result .player-result").textContent =
-        getResult(resultCom, resultPlayer);
+
+    if (Enabled == true) {
+        let resultPlayer = userKertas.id;
+        console.log("kertas di klik");
+        removeAll();
+        userKertas.classList.add("highlight");
+        let resultCom = computer();
+        document.querySelector("#game-result .player-result").style.display = "block";
+        document.querySelector("#game-result .result-text").remove();
+        document.querySelector("#game-result .player-result").textContent =
+            getResult(resultCom, resultPlayer);
+
+        Enabled = false;
+
+    }
 }
 
 userBatu.onclick = () => {
-    let resultPlayer = userBatu.id;
-    console.log("batu di klik");
-    removeAll();
-    userBatu.classList.add("highlight");
-    let resultCom = computer();
-    document.querySelector("#game-result .player-result").style.display = "block";
-    document.querySelector("#game-result .result-text").remove();
-    document.querySelector("#game-result .player-result").textContent =
-        getResult(resultCom, resultPlayer);
+
+    if (Enabled == true) {
+        let resultPlayer = userBatu.id;
+        console.log("batu di klik");
+        removeAll();
+        userBatu.classList.add("highlight");
+        let resultCom = computer();
+        document.querySelector("#game-result .player-result").style.display = "block";
+        document.querySelector("#game-result .result-text").remove();
+        document.querySelector("#game-result .player-result").textContent =
+            getResult(resultCom, resultPlayer);
+
+        Enabled = false;
+    }
 };
 
 userGunting.onclick = () => {
-    let resultPlayer = userGunting.id;
-    console.log("gunting di klik");
-    removeAll();
-    userGunting.classList.add("highlight");
-    let resultCom = computer();
-    document.querySelector("#game-result .player-result").style.display = "block";
-    document.querySelector("#game-result .result-text").remove();
-    document.querySelector("#game-result .player-result").textContent =
-        getResult(resultCom, resultPlayer);
+    if (Enabled == true) {
+        let resultPlayer = userGunting.id;
+        console.log("gunting di klik");
+        removeAll();
+        userGunting.classList.add("highlight");
+        let resultCom = computer();
+        document.querySelector("#game-result .player-result").style.display = "block";
+        document.querySelector("#game-result .result-text").remove();
+        document.querySelector("#game-result .player-result").textContent =
+            getResult(resultCom, resultPlayer);
+
+        Enabled = false;
+    }
 };
 
-refreshPage.onclick = () => {
-    console.log('refresh');
-    document.location.reload(true);
-}
+
 
 
 function getResult(resultCom, resultPlayer) {
-
     let result = "";
 
 
@@ -107,24 +124,24 @@ function getResult(resultCom, resultPlayer) {
     console.log("resultPlayer :" + resultPlayer);
 
 
-    if (resultCom == "comGunting" && resultPlayer == "userKertas") {
+    if (
+        (resultCom == "comBatu" && resultPlayer == "userKertas") ||
+        (resultCom == "comKertas" && resultPlayer == "userGunting") ||
+        (resultCom == "comGunting" && resultPlayer == "userBatu")
+    ) {
+        result = "PLAYER 1 WIN";
+    } else if (
+        (resultCom == "comGunting" && resultPlayer == "userKertas") ||
+        (resultCom == "comBatu" && resultPlayer == "userGunting") ||
+        (resultCom == "comKertas" && resultPlayer == "userBatu")
+    ) {
         result = "COM WIN";
-    } else if (resultCom == "comKertas" && resultPlayer == "userKertas") {
-        result = "DRAW";
-    } else if (resultCom == "comBatu" && resultPlayer == "userKertas") {
-        result = "PLAYER 1 WIN";
-    } else if (resultCom == "comGunting" && resultPlayer == "userGunting") {
-        result = "DRAW";
-    } else if (resultCom == "comKertas" && resultPlayer == "userGunting") {
-        result = "PLAYER 1 WIN";
-    } else if (resultCom == "comBatu" && resultPlayer == "userGunting") {
-        result = "COM WIN"
-    } else if (resultCom == "comGunting" && resultPlayer == "userBatu") {
-        result = "PLAYER 1 WIN";
-    } else if (resultCom == "comKertas" && resultPlayer == "userBatu") {
-        result = "COM WIN";
-    } else if (resultCom == "comBatu" && resultPlayer == "userBatu") {
-        result = "DRAW";
+    } else if (
+        (resultCom == "comKertas" && resultPlayer == "userKertas") ||
+        (resultCom == "comGunting" && resultPlayer == "userGunting") ||
+        (resultCom == "comBatu" && resultPlayer == "userBatu")
+    ) {
+        result = "DRAW"
     }
     return result;
 }
